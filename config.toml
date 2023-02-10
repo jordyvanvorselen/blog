@@ -1,0 +1,4 @@
+baseURL = 'https://jordyvanvorselen.com/'
+languageCode = 'en-us'
+title = 'Jordy van Vorselen'
+theme = 'loveit'
