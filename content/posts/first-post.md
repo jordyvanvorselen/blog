@@ -4,7 +4,10 @@ date: 2023-02-10T22:50:09+01:00
 draft: true
 tags: ["test"]
 categories: ["misc"]
+description: "This is the description of the blog post."
 ---
+
+<!--more-->
 
 ## Introduction
 
