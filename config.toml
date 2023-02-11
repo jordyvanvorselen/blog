@@ -1,4 +1,123 @@
-baseURL = 'https://jordyvanvorselen.com/'
-languageCode = 'en-us'
-title = 'Jordy van Vorselen'
-theme = 'loveit'
+baseURL = "https://jordyvanvorselen.com/"
+
+# Change the default theme to be use when building the site with Hugo
+theme = "loveit"
+
+# website title
+title = "Jordy van Vorselen"
+
+languageCode = "en"
+languageName = "English"
+
+[params.home]
+  rss = 10
+  [params.header.title]
+    name = "jordyvanvorselen.com"
+  [params.home.profile]
+    enable = true
+    gravatarEmail = "jordyvanvorselen@gmail.com"
+    avatarURL = ""
+    title = "Jordy van Vorselen"
+    subtitle = "A passionate software engineer specialised in designing, testing and crafting high quality software solutions. High test coverage fanatic and avid Test-Driven Development user.<br><br>When not busy coding, I can be found in the gym or playing my guitar. 😉<br><br>Working as a Full-Stack Software Engineer @ <a href=\"https://kabisa.nl\" target=\"_blank\">Kabisa</a>."
+    typeit = false
+    social = true
+
+# Author config
+[author]
+  name = "Jordy van Vorselen"
+  email = "jordyvanvorselen@gmail.com"
+  link = ""
+
+# Menu config
+[menu]
+  [[menu.main]]
+    weight = 1
+    identifier = "posts"
+    # you can add extra information before the name (HTML format is supported), such as icons
+    pre = ""
+    # you can add extra information after the name (HTML format is supported), such as icons
+    post = ""
+    name = "Posts"
+    url = "/posts/"
+    # title will be shown when you hover on this menu link
+    title = ""
+  [[menu.main]]
+    weight = 2
+    identifier = "tags"
+    pre = ""
+    post = ""
+    name = "Tags"
+    url = "/tags/"
+    title = ""
+  [[menu.main]]
+    weight = 3
+    identifier = "categories"
+    pre = ""
+    post = ""
+    name = "Categories"
+    url = "/categories/"
+    title = ""
+
+[params.social]
+  github = "jordyvanvorselen"
+  linkedin = "jordy-van-vorselen"
+  keybase = "jordyvanvorselen"
+  devto = "jordyvanvorselen"
+  email = "jordyvanvorselen@gmail.com"
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+
+[params.search]
+  enable = true
+  type = "lunr"
+  contentLength = 4000
+  placeholder = ""
+  maxResultLength = 10
+  snippetLength = 30
+  highlightTag = "em"
+  absoluteURL = false
+
+[params.page.share]
+  enable = true
+  twitter = true
+  facebook = true
+  linkedin = true
+  hackerNews = true
+  reddit = true
+  line = false
+  weibo = false
+
+[params.footer]
+  hugo = false
+
+[params.analytics]
+  enable = false
+
+  [params.analytics.google]
+    id = "G-9V85HZ35V1"
+    # whether to anonymize IP
+    anonymizeIP = true
+
+[markup]
+  # Syntax Highlighting (https://gohugo.io/content-management/syntax-highlighting)
+  [markup.highlight]
+    codeFences = true
+    guessSyntax = true
+    lineNos = true
+    lineNumbersInTable = true
+    # false is a necessary configuration (https://github.com/dillonzq/LoveIt/issues/158)
+    noClasses = false
+  # Goldmark is from Hugo 0.60 the default library used for Markdown
+  [markup.goldmark]
+    [markup.goldmark.extensions]
+      definitionList = true
+      footnote = true
+      linkify = true
+      strikethrough = true
+      table = true
+      taskList = true
+      typographer = true
+    [markup.goldmark.renderer]
+      # whether to use HTML tags directly in the document
+      unsafe = true
