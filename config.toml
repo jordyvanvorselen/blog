@@ -92,7 +92,7 @@ languageName = "English"
   hugo = false
 
 [params.analytics]
-  enable = false
+  enable = true
 
   [params.analytics.google]
     id = "G-9V85HZ35V1"
