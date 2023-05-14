@@ -1,7 +1,7 @@
 ---
 title: "How to fix silenced push notifications on Android"
 date: 2023-03-05T12:00:00+01:00
-draft: true
+draft: false
 tags: ["push notifications", "notification channel", "android", "flutter", "dart", "mobile"]
 categories: ["flutter"]
 description: "When working on an application that notifies users in the case of an evacuation, my team and I encountered an interesting bug. Other developers are probably going to run into the same issue, so here's how to fix it."
