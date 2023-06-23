@@ -88,6 +88,15 @@ languageName = "English"
   line = false
   weibo = false
 
+[params.page.comment]
+  enable = true
+  [params.page.comment.gitalk]
+    enable = true
+    owner = "jordyvanvorselen"
+    repo = "blog"
+    clientId = "dd3c8663a2aa0a74df78"
+    clientSecret = "CLIENT_SECRET_PLACEHOLDER"
+
 [params.footer]
   hugo = false
 
