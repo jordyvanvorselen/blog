@@ -1,0 +1,62 @@
+[[main]]
+    identifier = "home"
+    name = "Home"
+    url = "/"
+    weight = 1
+
+[[main]]
+    identifier = "posts"
+    name = "Posts"
+    url = "/posts"
+    weight = 2
+
+[[main]]
+    identifier = "categories"
+    name = "Categories"
+    url = "/categories"
+    weight = 3
+
+[[main]]
+    identifier = "tags"
+    name = "Tags"
+    url = "/tags"
+    weight = 4
+
+#[[main]]
+#    identifier = "donate"
+#    name = "Donate"
+#    url = "https://ko-fi.com/nixentric"
+#    weight = 5
+
+
+# Social Media Configuration
+
+[[social]]
+    identifier = "email"
+    name = "Mail"
+    url = "mailto:jordyvanvorselen@gmail.com"
+    weight = 1
+
+[[social]]
+    identifier = "devto"
+    name = "DEV.to"
+    url = "https://dev.to/jordyvanvorselen"
+    weight = 2
+
+[[social]]
+    identifier = "keybase"
+    name = "Keybase"
+    url = "https://keybase.io/jordyvanvorselen"
+    weight = 3
+
+[[social]]
+    identifier = "linkedin"
+    name = "LinkedIn"
+    url = "https://www.linkedin.com/in/jordy-van-vorselen"
+    weight = 4
+
+[[social]]
+    identifier = "github"
+    name = "GitHub"
+    url = "https://github.com/jordyvanvorselen"
+    weight = 5

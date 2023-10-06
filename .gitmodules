@@ -1,3 +1,3 @@
-[submodule "themes/loveit"]
-	path = themes/loveit
-	url = git@github.com:dillonzq/LoveIt.git
+[submodule "themes/lowkey"]
+	path = themes/lowkey
+	url = https://github.com/nixentric/Lowkey-Hugo-Theme.git
