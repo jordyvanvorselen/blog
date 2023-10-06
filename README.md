@@ -7,7 +7,7 @@ My personal blog, hosted at https://jordyvanvorselen.com
 ```bash
 $ asdf plugin add hugo
 $ asdf install
-$ yarn
+$ npm install
 ```
 
 ## Run it locally
