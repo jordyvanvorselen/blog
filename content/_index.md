@@ -1,5 +1,5 @@
 ---
-title: "Hello world"
+title: "Hello world!"
 draft: false
 ---
 
@@ -8,7 +8,7 @@ and helping development teams take the step to the next level by embracing a cul
 
 High test coverage, software architecture and open-source fanatic. Strives for *beautiful* code.
 
-In my career I have helped solve critical problems for many different companies by building robust software solutions. The work ranged from short assignments to
+In my career I help companies solve critical problems by designing and building robust software solutions. My previous work ranged from short assignments to
 multi-year projects for some of the largest enterprise companies of the Netherlands - like Signify or ASML.
 
 When not busy coding, I can be found lifting weights 🏋️‍♂️ or playing guitar :guitar:.
