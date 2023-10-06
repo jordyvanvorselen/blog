@@ -24,6 +24,6 @@
   {{- end }}
 
   {{ range .Site.Params.custom_js -}}
-    <script type="text/javascript" src="{{ . | absURL }}" integrity="{{ $styles.Data.Integrity }}" ></script>
+    <script type="text/javascript" src="{{ . | absURL }}"></script>
   {{- end }}
 {{- end -}}
