@@ -1,0 +1,29 @@
+# Homepage Config
+isSinglePage = true
+
+# Meta Config
+description = "Hello"
+
+# Header Configuration
+avatar = "img/profile-picture.jpeg"
+
+# disqus is a comment system. see https://disqus.com
+disqusShortname = ""
+
+[emoji]
+enableEmoji = true
+
+ # giscus is a comment system based on GitHub Discussions. see https://giscus.app
+[giscus]       
+    enable = true
+    repo = "jordyvanvorselen/blog"
+    repoId = "R_kgDOI8aNGA"
+    category = "General"
+    categoryId = "DIC_kwDOI8aNGM4CZ6hf"
+    reactionsEnabled = 1
+    strict = 1
+    mapping = "pathname"  # comment value is the default value
+    emitMetadata = 0
+    inputPosition = "bottom"
+    theme = "light"
+    lang = "en"

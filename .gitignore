@@ -1,1 +1,5 @@
+.env
+.env.build
+node_modules
 public
+resources/_gen
