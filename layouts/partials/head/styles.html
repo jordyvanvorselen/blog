@@ -1,0 +1,29 @@
+{{/*  Resources  */}}
+{{- $tailwind := resources.Get "css/tailwind.css"  | postCSS (dict "config" "./config/postcss.config.js") -}}
+
+{{/*  Processor  */}}
+{{- $styles := slice $tailwind | resources.Concat "css/app.css" -}}
+
+{{/* Output */}}
+{{- if eq hugo.Environment "development" -}}
+  <link rel="stylesheet" href="{{ $styles.Permalink | absURL }}">
+
+  {{ range .Site.Params.custom_css -}}
+    <link rel="stylesheet" href="{{ . | absURL }}">
+  {{- end }}
+
+  {{ range .Site.Params.custom_js -}}
+    <script type="text/javascript" src="{{ . | absURL }}"></script>
+  {{- end }}
+{{- else -}}
+{{- $styles := $styles | minify | fingerprint | resources.PostProcess -}}
+  <link rel="stylesheet" href="{{ $styles.Permalink }}" integrity="{{ $styles.Data.Integrity }}" >
+
+  {{ range .Site.Params.custom_css -}}
+    <link rel="stylesheet" href="{{ . | absURL }}" integrity="{{ $styles.Data.Integrity }}" >
+  {{- end }}
+
+  {{ range .Site.Params.custom_js -}}
+    <script type="text/javascript" src="{{ . | absURL }}" integrity="{{ $styles.Data.Integrity }}" ></script>
+  {{- end }}
+{{- end -}}

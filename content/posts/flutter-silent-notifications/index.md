@@ -34,7 +34,7 @@ In Android we have to create a notification channel to be able to show local not
 
 Priority is only used for Android 7.1 and lower according to [the documentation](https://developer.android.com/develop/ui/views/notifications/channels#importance), so that was not of interest for us here. The importance setting however, *was* interesting. But we already set to max priority in our code, so what could possibly be wrong?
 
-{{< highlight dart >}}
+```dart
 static final _channel = AndroidNotificationChannel(
   'alarm_notification_channel',
   'Alarm Notifications',
@@ -45,7 +45,7 @@ static final _channel = AndroidNotificationChannel(
   enableVibration: true,
   vibrationPattern: Int64List.fromList([0, 30000]),
 );
-{{< /highlight >}}
+```
 
 But if you read [the documentation](https://developer.android.com/develop/ui/views/notifications/channels#importance) carefully, you'll notice that only the `Priority` setting supports the `max` option.
 

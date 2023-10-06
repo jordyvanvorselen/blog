@@ -20,3 +20,7 @@ paginate = 5
       lineNumbersInTable = false
       tabWidth = 4
       noClasses = false
+
+[params]
+      custom_css = ["css/syntax.css"]
+      custom_js = []

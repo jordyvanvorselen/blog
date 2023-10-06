@@ -40,13 +40,13 @@
 [[social]]
     identifier = "devto"
     name = "DEV.to"
-    url = "https://dev.to/jordyvanvorselen"
+    url = "https://www.dev.to/jordyvanvorselen"
     weight = 2
 
 [[social]]
     identifier = "keybase"
     name = "Keybase"
-    url = "https://keybase.io/jordyvanvorselen"
+    url = "https://www.keybase.io/jordyvanvorselen"
     weight = 3
 
 [[social]]
@@ -58,5 +58,5 @@
 [[social]]
     identifier = "github"
     name = "GitHub"
-    url = "https://github.com/jordyvanvorselen"
+    url = "https://www.github.com/jordyvanvorselen"
     weight = 5
