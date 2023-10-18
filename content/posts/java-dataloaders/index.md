@@ -10,7 +10,7 @@ tags:
 - Performance - Spring Boot
 categories:
 - GraphQL
-description: "TODO"
+description: "This post will help you understand the N+1 query problem in a GraphQL API and show you how to use java-dataloader to fix it. By using batch loaders, API performance for one of my clients was improved by 60 to 80 percent!"
 images: []
 resources:
 - name: "featured-image"
@@ -29,7 +29,7 @@ Choosing to build a GraphQL API over a REST API can help avoid overfetching and 
 building a GraphQL API without keeping an eye on your database queries might lead to accidently building a very inefficient API call. This might happen because:
 
 - Your resolvers are inefficient
-- The frontend does a giant recursive fetch of the whole Graph in one API call, instead of multiple smaller (paginated) API calls
+- The frontend does a giant recursive fetch of the whole graph in one API call, instead of multiple smaller (paginated) API calls
 
 #### Let's look at an example
 
@@ -90,8 +90,8 @@ public class BookResolver implements GraphQLResolver<Review> {
 ```
 ^ *The old resolver*
 
-So this resolver is being called for each book ID that we fetched. As the code is executed in real time, there is no way to combine the database calls using this
-code. We don't know if there will be only one call, multiple calls or how long the list of ID's is.
+So this resolver is being called for each book ID that we fetched in another resolver. As the code is executed in real time, there is no way to combine the database
+calls. We don't know if there will be only one call, multiple calls or how long the remaining list of ID's is.
 
 A simplified overview of what will happen:
 
@@ -141,8 +141,8 @@ public class DataLoaderRegistryFactory {
 ```
 *^ com.client.backend.graphql.dataloader.DataLoaderRegistryFactory*
 
-This registry is needed to register our future data loaders. Just a bit of patience, we will create the ReviewBatchLoader shortly :wink:. This is also the place
-where you can configure global settings for all your data loaders. Like for example the maximum batch size.
+This registry is needed to register our future data loaders. Just a bit of patience, we will create the ReviewBatchLoader shortly :wink:. This registry is also
+the place where you can configure global settings for all your data loaders. Like for example the maximum batch size.
 
 #### Creating a data loader
 
@@ -193,13 +193,16 @@ public CompletionStage<Map<Integer, List<Review>>> load(Set<Integer> bookIds) {
 ```
 
 The function signature is a bit complex, but will make sense after you give it a bit of thought. The return value is a [CompletionStage](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/CompletionStage.html)
-which means that the result of this function is an asynchronous operation.
+which means that the result of this function is an asynchronous operation. Why does it need to be asynchronous? Because we do not want to load (fetch) the data
+immediately when the load function is called. Only when we have a batch of ID's that is large enough, we want to execute a single load that loads the full batch.
+Loading the full batch in a single query will avoid having to execute one query for each element that we want to load. We will come back to this later.
 
-The body of the CompletionStage is a `CompletableFuture` in this case. The body of the completable future should be you calling or data fetching layer
-(most likely repositories). Make sure you use a query that fetches the entire batch (SQL `IN` query)! If you just put a singlar fetch in a loop you will still
-end up with N+1 queries.
+The body of the CompletionStage is a `CompletableFuture`. The body of the completable future should be calling the data fetching layer
+(most likely repositories). Make sure to use a query that fetches the entire batch (SQL `SELECT WHERE id IN (...)` query)! If we put a singlar fetch in a
+loop we will still end up with N+1 queries, which will not give us the performance improvement we want.
 
-The return value should be a Map. In our example the map looks like this:
+The return value should be a `Map`. Why a `Map`? After our data is returned from the resolver, GraphQL needs to know which set of reviews belongs to which book.
+In our example the map looks like this:
 
 ```javascript
 {
@@ -210,7 +213,14 @@ The return value should be a Map. In our example the map looks like this:
 }
 ```
 
+Now our resolver knows exactly what set of reviews belongs to a certain book.
+
+```java
+... load(Set<Integer> bookIds) {
+```
+
 The input argument of the `load` function is a `Set` of book ID's. This is **one batch** of ID's that the batch loader receives. So how are these batches created?
+Let's take a look at our resolver.
 
 To add calls to a batch, we will need to change our resolver:
 
@@ -228,16 +238,25 @@ public class BookResolver implements GraphQLResolver<Review> {
 ```
 *^ com.client.backend.graphql.resolvers.BookResolver*
 
-As you can see, the resolver still calls `dataloader.load(id)` N times. But because we use a `BatchLoader`, the call will not happen immediately. It will be batched
-until the max batch size has been reached. You can also configure when a batch should be dispatched by setting a [DispatchPredicate](https://github.com/graphql-java/java-dataloader#scheduled-registry-dispatching).
+As you can see, the resolver still calls `dataloader.load(id)` N times. But because we use a `BatchLoader`, the call will not happen immediately. Remember that
+the implementation of our batch loader was asynchronous? It will batch all calls until the max batch size has been reached. Only after this size has been reached
+it will dispatch the call. You can also configure when a batch should be dispatched by setting a [DispatchPredicate](https://github.com/graphql-java/java-dataloader#scheduled-registry-dispatching).
 
 This way, all calls will be halted and gathered until a batch has been filled. Then the batch will be dispatched, which executes the query that fetches the entire
-batch:
+batch.
+
+A simplified overview of what will happen in the new scenario:
 
 ![Scenario 2: Batch Loading Resolver](./batch-loading-resolver.png)
 
+As you can see, the new code will no longer result in N+1 queries - but in 1 query. This is way better for database load and will load your data much quicker than brute
+forcing your database with separate queries.
+
 ## Conclusion
 
-When building a GraphQL API, make sure to check if your database queries are efficient. Using batch loading can reduce the load on your database quite a bit. When
-your application grows, it can even prevent very slow load times or even downtime. In our case, we discovered that the N+1 query issues were the cause of our problems due
-to application performance monitoring in [Datadog](https://www.datadoghq.com/). Make sure to set up good monitoring for your application, so you can tackle these problems before they reach production!
+When building a GraphQL API, make sure to check if your resolvers result in efficient database queries. When running into the N+1 query problem, using batch loading can reduce the load on your database quite a bit. When
+your application grows, it can even prevent very slow load times or even downtime.
+
+In our case, we discovered that the cause of our slow load times and eventually database downtime was the N+1 query problem by using application performance
+monitoring in [Datadog](https://www.datadoghq.com/). Make sure to set up good monitoring for your application, so you can tackle these problems before they reach
+production!
