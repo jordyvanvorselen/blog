@@ -32,7 +32,7 @@ So I started debugging and found the issue after a while...
 
 In Android we have to create a notification channel to be able to show local notifications. This notification channel two properties that are of interest: `Importance` and `Priority`.
 
-Priority is only used for Android 7.1 and lower according to [the documentation](https://developer.android.com/develop/ui/views/notifications/channels#importance), so that was not of interest for us here. The importance setting however, *was* interesting. But we already set to max priority in our code, so what could possibly be wrong?
+`Priority` is only used for Android 7.1 and lower according to [the documentation](https://developer.android.com/develop/ui/views/notifications/channels#importance), so that was not of interest for us here. The `importance` setting however, *was* interesting. But wait - we already set this to max in our code? What could possibly be wrong?
 
 ```dart
 static final _channel = AndroidNotificationChannel(
@@ -47,11 +47,9 @@ static final _channel = AndroidNotificationChannel(
 );
 ```
 
-But if you read [the documentation](https://developer.android.com/develop/ui/views/notifications/channels#importance) carefully, you'll notice that only the `Priority` setting supports the `max` option.
+If you read [the documentation](https://developer.android.com/develop/ui/views/notifications/channels#importance) carefully, you'll notice that only the `Priority` setting supports the `max` option. That is fine.
 
-The highest `Importance` option is `high`, not `max`. 
-
-But as the `flutter_local_notifications` plugin also supports `max` for the `Importance` setting, it's very easy to fall for this and select the wrong option. So to fix this, we just have to change the `Importance` setting:
+But the highest `Importance` option is `high`, not `max`. The `flutter_local_notifications` plugin also supports `max` for the `Importance` setting, so this makes it very easy to select the wrong option. To fix this problem, we just have to change the `Importance` setting:
 
 ```dart
 static final _channel = AndroidNotificationChannel(
@@ -61,7 +59,7 @@ static final _channel = AndroidNotificationChannel(
 );
 ```
 
-<!-- ![Android importance vs priority](../assets/android-importance-level.png) -->
+I hope this will save someone a few hours of valuable time debugging this!
 
 ## Lessons learned
 

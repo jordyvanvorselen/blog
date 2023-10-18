@@ -38,9 +38,9 @@
     weight = 1
 
 [[social]]
-    identifier = "devto"
-    name = "DEV.to"
-    url = "https://www.dev.to/jordyvanvorselen"
+    identifier = "twitter"
+    name = "Twitter"
+    url = "https://www.twitter.com/jvanvorselen"
     weight = 2
 
 [[social]]
