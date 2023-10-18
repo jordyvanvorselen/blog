@@ -1,7 +1,7 @@
 ---
 title: "How to fix silenced push notifications on Android"
 draft: false
-date: 2023-03-05T12:00:00+01:00
+date: 2023-03-05T06:00:00+01:00
 tags: 
 - Push Notifications
 - Notification channel
@@ -47,9 +47,9 @@ static final _channel = AndroidNotificationChannel(
 );
 ```
 
-If you read [the documentation](https://developer.android.com/develop/ui/views/notifications/channels#importance) carefully, you'll notice that only the `Priority` setting supports the `max` option. That is fine.
+If you read [the documentation](https://developer.android.com/develop/ui/views/notifications/channels#importance) carefully, you'll notice that the highest value for the `Priority` setting is `max`. That is fine.
 
-But the highest `Importance` option is `high`, not `max`. The `flutter_local_notifications` plugin also supports `max` for the `Importance` setting, so this makes it very easy to select the wrong option. To fix this problem, we just have to change the `Importance` setting:
+But the highest `Importance` option is `high`, not `max`. The `flutter_local_notifications` plugin also supports `max` for the `Importance` setting, so this makes it very easy to accidently choose the wrong option. To fix this problem, we just have to change the `Importance` setting:
 
 ```dart
 static final _channel = AndroidNotificationChannel(
