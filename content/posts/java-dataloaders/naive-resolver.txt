@@ -1,0 +1,10 @@
+title Naive resolver without batch loading (N+1 queries)
+
+User->Endpoint:Does API call
+Endpoint->AuthorResolver:Fetches all Books
+AuthorResolver->BookResolver:Fetches all Reviews for Book ID 1
+BookResolver->Database:Executes query (WHERE book_id = 1)
+AuthorResolver->BookResolver:Fetches all Reviews for Book ID 2
+BookResolver->Database:Executes query (WHERE book_id = 2)
+AuthorResolver->BookResolver:Fetches all Reviews for Book ID 3
+BookResolver->Database:Executes query (WHERE book_id = 3)

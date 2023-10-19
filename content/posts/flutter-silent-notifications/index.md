@@ -10,7 +10,7 @@ tags:
 - Dart
 - Mobile
 categories:
-- Mobile
+- Flutter
 description: "When working on an application that notifies users in the case of an evacuation, my team and I encountered an interesting bug. Other developers are probably going to run into the same issue, so here's how to fix it."
 images: []
 resources:
