@@ -2,7 +2,7 @@
 isSinglePage = true
 
 # Meta Config
-description = "Hello"
+description = "Full-stack software engineer specialised in crafting elegant solutions and promoting best practices. Sharing expertise in high quality software and clean architecture."
 
 # Header Configuration
 avatar = "img/profile-picture.jpeg"
@@ -14,7 +14,7 @@ disqusShortname = ""
 enableEmoji = true
 
  # giscus is a comment system based on GitHub Discussions. see https://giscus.app
-[giscus]       
+[giscus]
     enable = true
     repo = "jordyvanvorselen/blog"
     repoId = "R_kgDOI8aNGA"

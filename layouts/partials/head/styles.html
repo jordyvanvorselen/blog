@@ -6,25 +6,29 @@
 
 {{/* Output */}}
 {{- if eq hugo.Environment "development" -}}
-  <link rel="stylesheet" href="{{ $styles.Permalink | absURL }}">
+<link rel="stylesheet" href="{{ $styles.Permalink | absURL }}">
 {{- else -}}
 {{- $styles := $styles | minify | fingerprint | resources.PostProcess -}}
-  <link rel="stylesheet" href="{{ $styles.Permalink }}" integrity="{{ $styles.Data.Integrity }}" >
+<link rel="stylesheet" href="{{ $styles.Permalink }}" integrity="{{ $styles.Data.Integrity }}">
 {{- end -}}
 
 {{ range .Site.Params.custom_css -}}
-  <link rel="stylesheet" href="{{ . | absURL }}">
+<link rel="stylesheet" href="{{ . | absURL }}">
 {{- end }}
 
 {{ range .Site.Params.custom_js -}}
-  <script type="text/javascript" src="{{ . | absURL }}"></script>
+<script type="text/javascript" src="{{ . | absURL }}"></script>
 {{- end }}
 
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-9V85HZ35V1"></script>
 <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
     gtag('js', new Date());
 
     gtag('config', 'G-9V85HZ35V1');

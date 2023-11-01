@@ -134,7 +134,7 @@ To start using data loaders, we will have to create two things:
 
 #### Creating the data loader registry
 
-In my clients' codebase, there was already a `com.client.backend.graphql` Java package. So to keep everything neat and tidy, we will create a new `com.client.backend.graphql.dataloader`
+In my clients' codebase, there was already a `graphql` Java package. So to keep everything neat and tidy, we will create a new `graphql.dataloader`
 package. In here, we will create a factory to create a new data loader registry:
 
 ```java
@@ -162,7 +162,7 @@ public class DataLoaderRegistryFactory {
   }
 }
 ```
-*^ com.client.backend.graphql.dataloader.DataLoaderRegistryFactory*
+*^ graphql.dataloader.DataLoaderRegistryFactory*
 
 This registry is needed to register our future data loaders. Just a bit of patience, we will create the ReviewBatchLoader shortly :wink:. This registry is also
 the place where you can configure global settings for all the data loaders. Like for example the maximum batch size.
@@ -206,7 +206,7 @@ public class ReviewsBatchLoader implements MappedBatchLoader<Integer, List<Revie
   }
 }
 ```
-*^ com.client.backend.graphql.resolvers.ReviewsBatchLoader*
+*^ graphql.resolvers.ReviewsBatchLoader*
 
 So let's go over each part of the batch loader to understand the code:
 
@@ -259,7 +259,7 @@ public class BookResolver implements GraphQLResolver<Review> {
   }
 }
 ```
-*^ com.client.backend.graphql.resolvers.BookResolver*
+*^ graphql.resolvers.BookResolver*
 
 As you can see, the resolver still calls `dataloader.load(id)` N times. But because we use a `BatchLoader`, the call will not happen immediately. Remember that
 the implementation of our batch loader was asynchronous? It will batch all calls until the max batch size has been reached. Only after this size has been reached
