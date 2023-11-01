@@ -15,6 +15,7 @@ categories:
 - Java
 description: "This post will help you understand the N+1 query problem in a GraphQL API and show you how to use java-dataloader to fix it. By using batch loaders, API performance for one of my clients was improved by 60 to 80 percent!"
 images: []
+mermaid: true
 resources:
 - name: "featured-image"
   src: "featured-image.png"
@@ -100,7 +101,24 @@ calls - we don't know if there will be only one call, multiple calls or how long
 
 A simplified overview of what will happen:
 
-![Scenario 1: Naive Resolver](./naive-resolver.png)
+{{< mermaid >}}
+sequenceDiagram
+    title Naive resolver without batch loading (N+1 queries)
+    participant User
+    participant Endpoint
+    participant AuthorResolver
+    participant BookResolver
+    participant Database
+    User ->> Endpoint: Does API call
+    Endpoint ->> AuthorResolver: Fetches all Books
+    AuthorResolver ->> BookResolver: Fetches all Reviews for Book ID 1
+    BookResolver ->> Database: Executes query (WHERE book_id = 1)
+    AuthorResolver ->> BookResolver: Fetches all Reviews for Book ID 2
+    BookResolver ->> Database: Executes query (WHERE book_id = 2)
+    AuthorResolver ->> BookResolver: Fetches all Reviews for Book ID 3
+    BookResolver ->> Database: Executes query (WHERE book_id = 3)
+{{< /mermaid >}}
+<br/>
 
 This is the reason GraphQL came up with [batch loading](https://docs.gitlab.com/ee/development/graphql_guide/batchloader.html). As we are using a Java Spring Boot
 API in this example, we will use [java-dataloader](https://github.com/graphql-java/java-dataloader) to implement batch loading.
@@ -252,7 +270,28 @@ batch.
 
 A simplified overview of what will happen in the new scenario:
 
-![Scenario 2: Batch Loading Resolver](./batch-loading-resolver.png)
+{{< mermaid >}}
+sequenceDiagram
+  title Resolver with batch loading
+  participant User as User
+  participant Endpoint as Endpoint
+  participant AuthorResolver as Author Resolver
+  participant BookResolver as Book Resolver
+  participant BatchLoader as Batch Loader
+  participant Database as Database
+
+  User->>Endpoint: Does API call
+  Endpoint->>AuthorResolver: Fetches all Books
+  AuthorResolver->>BookResolver: Fetches all Reviews for Book ID 1
+  BookResolver->>BatchLoader: Add Book ID 1 to batch
+  AuthorResolver->>BookResolver: Fetches all Reviews for Book ID 2
+  BookResolver->>BatchLoader: Add Book ID 2 to batch
+  AuthorResolver->>BookResolver: Fetches all Reviews for Book ID 3
+  BookResolver->>BatchLoader: Add Book ID 3 to batch
+  BatchLoader->>Database: Executes query for batch (WHERE book_id IN (1, 2, 3))
+{{< /mermaid >}}
+<br/>
+
 
 As you can see, the new code will no longer result in N+1 queries - but *in 1 query*. This is way better for database load and will load the data much quicker
 compared to the old code, which was basically brute forcing the database with separate queries.

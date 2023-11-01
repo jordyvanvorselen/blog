@@ -1,0 +1,11 @@
+.mermaid {
+    display: flex;
+    justify-content: center;
+}
+
+.mermaid > svg {
+    background-color: #2E2E38;
+    border-radius: 0.5rem;
+    border-width: 1px;
+    padding: 1.25rem;
+}
