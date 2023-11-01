@@ -7,3 +7,11 @@
 <link rel="canonical" href="{{ .Permalink }}">
 <link rel="robots" href="/robots.txt"/>
 {{ template "_internal/opengraph.html" . }}
+
+{{ if .PublishDate }}
+{{- $iso8601 := "2006-01-02T15:04:05-07:00" -}}
+{{ with .PublishDate }}
+<meta property="og:publish_date" {{ .Format $iso8601 | printf "content=%q" | safeHTMLAttr }} />
+<meta property="article:author" content="https://twitter.com/jvanvorselen"/>
+<meta property='article:publisher' content="https://twitter.com/jvanvorselen"/>{{ end }}
+{{ end }}
