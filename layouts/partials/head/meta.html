@@ -6,6 +6,7 @@
       content="{{ if .IsPage }}{{ or .Params.description .Summary }}{{ else if .IsHome }}{{ .Site.Params.description }}{{ else if .IsNode }}{{ or .Params.description .Summary }}{{ end }}">
 <link rel="canonical" href="{{ .Permalink }}">
 <link rel="robots" href="/robots.txt"/>
+
 {{ template "_internal/opengraph.html" . }}
 
 {{ if .PublishDate }}
@@ -17,5 +18,5 @@
 <meta property='article:publisher' content="https://twitter.com/jvanvorselen"/>{{ end }}
 <meta name="twitter:card" content="summary_large_image"/>
 <meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="700">
+<meta property="og:image:height" content="627">
 {{ end }}
