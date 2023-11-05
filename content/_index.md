@@ -6,11 +6,10 @@ draft: false
 I am a software engineer specialised in designing, testing and crafting high quality software solutions. I love finding elegant solutions to complex problems
 and helping development teams take the step to the next level by embracing a culture of best practices.
 
-On this blog I will write about all the things I care about related to software engineering. Things like high test coverage, clean software architecture, open-source and writing beautiful code tend to pique my interest.
+On this blog I will write about all the things I care about related to software engineering. Things like automated testing, clean software architecture, open-source and writing beautiful code tend to pique my interest.
 
 During the day most of my time is spent helping companies solve critical problems by designing and building robust software solutions. My previous work ranged from short assignments to
-multi-year projects for some of the largest enterprise companies of the Netherlands - like Signify or ASML. There's quite a big chance you have been impacted by
-some the code I wrote over there.
+multi-year projects for some of the largest enterprise companies of the Netherlands - like Signify or ASML.
 
 When not busy coding, I can be found lifting weights 🏋️‍♂️ or playing guitar :guitar:.
 
