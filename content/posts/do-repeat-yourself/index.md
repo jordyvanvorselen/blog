@@ -17,13 +17,13 @@ resources:
 
 <!--more-->
 
-#### Sometimes
+#### Standard but not absolute
 
 One of the first things we teach aspiring software engineers is the principle **Don't Repeat Yourself**. The notion that as software engineers we should *never* write the same
 code twice. We learn that by making code reusable we can take away the oh so dreaded duplication, which makes our code a lot harder to change.
 
 Most of the time, the principle applies and will make your codebase better. So, after learning this, it's quite likely each and every case of duplication becomes one you fight.
-Before you know it you are waging war against duplication and exterminating it left and right using your favourite weapons - refatoring it into a function, utility class or even a standalone library for others to use.
+Before you know it you are waging war against duplication and exterminating it left and right using your favourite weapons - refactoring it into a function, utility class or even a standalone library for others to use.
 
 But is it *always* worth it? Is abstracting *each and every* duplication away worthy of your precious time? And if not for time - is it always beneficial for maintainability?
 
@@ -43,7 +43,7 @@ Refactoring a duplicated piece of code into the right abstraction is very satisf
 business changes, so the code needs to change. Oh, how convenient! We abstracted this code into a function and now we only have to change it in one place instead
 of having to change it throughout the whole codebase. 
 
-It's the *moment of validation* for our choices of the past. The undisputable proof we made the right choice. :muscle:
+It's the *moment of validation* for our choices of the past. The indisputable proof we made the right choice. :muscle:
 
 In this case it was worth the time that was invested into the refactor. It made our lives *easier* when change was needed.
 
@@ -61,10 +61,10 @@ the project after all! :tada:
 
 But instead of being met with the happy experience of *convenience*, you notice that it's now a little harder than before to add the new business rules.
 
-Apparently, only the behavior of one of the two original classes needs to be changed. As you already invested the time to create this beautiful abstraction, you can't revert back
+Apparently, only the behaviour of one of the two original classes needs to be changed. As you already invested the time to create this beautiful abstraction, you can't revert back
 to the old ways. That would feel *bad*, since then you are unconsciously admitting you made the wrong choice in the past. :thinking_face:
 
-You decide to just add a parameter to the extracted function. I mean, one function parameter is still readable. I can implement this change pretty quick. Nothing
+You decide to just add a parameter to the extracted function. I mean, one function parameter is still readable. I can implement this change pretty quickly. Nothing
 wrong with just a single parameter, right? And anyway, we might be able to benefit from the abstraction [in the future](https://en.wikipedia.org/wiki/You_aren%27t_gonna_need_it).
 
 *And today, a bad abstraction was born.*
@@ -76,18 +76,3 @@ who created it.
 So some of them add a few positional parameters, others add parameters with default values and the last one even adds a few keyword arguments.
 
 The code is dryer than the Sahara at high noon, but the cycle goes on, and on, and on...
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
