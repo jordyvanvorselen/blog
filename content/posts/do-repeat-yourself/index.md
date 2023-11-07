@@ -1,7 +1,7 @@
 ---
 title: "Do Repeat Yourself"
 draft: true
-date: 2023-11-15:00:00
+date: 2023-11-15T10:00:00
 tags: 
 - Best Practices
 - Software Engineering
