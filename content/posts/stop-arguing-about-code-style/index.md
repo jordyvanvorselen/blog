@@ -41,10 +41,10 @@ public class BookApiController {
 
 Oh man :tired_face:. I think we all know this feeling too well.
 
-I'm not going to argue that keeping or removing the blank line is a good idea. But I am going to argue that having this kind of comments on pull requests is
-costing your team time. And they cost more time than you think. Instead of being able to merge it after the first review, you and the reviewer had to:
+I'm not going to argue that keeping or removing the blank line is a good idea. But I am going to argue that having to put these comments on pull requests is
+costing your team time. And they can cost more time than you think at first. After waiting for a review, you had to open the PR and read it. But instead of  Instead
+of being able to merge it, you and the reviewer now had to:
 
-* (Optional) Discuss these 
 * Implement this tiny change;
 * Re-request a review;
 * Wait for the reviewer to approve.
