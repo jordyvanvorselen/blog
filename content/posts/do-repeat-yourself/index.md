@@ -17,7 +17,7 @@ resources:
 
 <!--more-->
 
-#### Standard but not absolute
+#### Standard, but not absolute
 
 One of the first things we teach aspiring software engineers is the principle **Don't Repeat Yourself**. The notion that as software engineers we should *never* write the same
 code twice. We learn that by making code reusable we can take away the oh so dreaded duplication, which makes our code a lot harder to change.
@@ -76,3 +76,6 @@ who created it.
 So some of them add a few positional parameters, others add parameters with default values and the last one even adds a few keyword arguments.
 
 The code is dryer than the Sahara at high noon, but the cycle goes on, and on, and on...
+
+
+What do you think about this? Let me know in the comments :point_down:
