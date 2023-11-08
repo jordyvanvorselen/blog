@@ -47,7 +47,7 @@ It's the *moment of validation* for our choices of the past. The indisputable pr
 
 In this case it was worth the time that was invested into the refactor. It made our lives *easier* when change was needed.
 
-#### The wrong abstraction
+#### A bad abstraction
 
 But in other cases creating an abstraction that looks very similar to the abstraction above, can make our lives *harder*.
 
