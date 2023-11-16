@@ -1,7 +1,7 @@
 ---
 title: "Dive into the unknown"
 draft: true
-date: 2023-11-08T10:00:00
+date: 2023-11-15T10:00:00
 tags:
   - Best Practices
   - Software Engineering
@@ -10,7 +10,9 @@ tags:
   - Process
 categories:
   - Best Practices
-description: ""
+description:
+  "A likely trap to fall for is wanting to know too much up front. Being too risk-averse. Sometimes
+  it's better to jump into the unknown than to dabble around in charted territory forever."
 images: []
 resources:
   - name: "featured-image"
