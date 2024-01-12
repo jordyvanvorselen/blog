@@ -1,7 +1,7 @@
 ---
 title: "Do Repeat Yourself"
-draft: true
-date: 2023-11-15T10:00:00
+draft: false
+date: 2024-01-12T15:00:00
 tags:
   - Best Practices
   - Software Engineering
@@ -16,14 +16,15 @@ images: []
 resources:
   - name: "featured-image"
     src: "featured-image.png"
+canonical: https://kabisa.nl/en/insights/do-repeat-yourself/
 ---
 
 <!--more-->
 
 One of the first things we teach aspiring software engineers is the principle **Don't Repeat
-Yourself**. The notion that as software engineers we should _never_ write the same code twice. We
-learn that by making code reusable we can take away the oh so dreaded duplication, which makes our
-code a lot harder to change.
+Yourself**. The notion that as software engineers we should _never_ write the same code twice.
+Duplication makes our code harder to change. So to prevent this, we learn to take all cases of the
+oh so dreaded duplication away.
 
 Most of the time, the principle applies and will make the codebase better. So, after learning this,
 it's quite likely each and every case of duplication becomes one we fight. Before we know it we are
@@ -97,7 +98,7 @@ last one even adds a few keyword arguments:
 
 ```java
 public void generate(Data data, MailData mailData, sendMail = false, type = Type.A, alsoGenerateY = true) /* etc... */ {
-    generateX(data)
+    generateX(data);
 
     // Parameters and checks keep getting added.
     // Complexity keeps rising over time, at some
@@ -108,7 +109,7 @@ public void generate(Data data, MailData mailData, sendMail = false, type = Type
         }
 
         if (alsoGenerateY && type != Type.A && mailData.X == true) {
-            generateY(data)
+            generateY(data);
         }
     }
 }
