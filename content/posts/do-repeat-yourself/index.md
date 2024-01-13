@@ -9,7 +9,7 @@ tags:
 categories:
   - Best Practices
 description:
-  "One of the first things we learn aspiring software engineers is the principle Don't Repeat
+  "One of the first things we teach aspiring software engineers is the principle Don't Repeat
   Yourself. While this is a very useful rule of thumb, it doesn't apply in every case. In this post
   we will discuss when it does not."
 images: []
