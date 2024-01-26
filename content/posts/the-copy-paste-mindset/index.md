@@ -70,7 +70,7 @@ And to keep our precious job titles as specific as possible we welcome complexit
 > helps our customers!
 
 It is a fundamentally flawed idea that we’re now [slowly coming back](https://htmx.org/) from, tail
-between legs.
+between legs. Some of us just don't realize it yet.
 
 #### The goal of software engineering
 
@@ -91,7 +91,7 @@ think are crazy to work or think in a certain way. Learn from those you _think_ 
 
 Because it’s all going to pass. Your cherished library, framework, or language _will_ be replaced.
 Even Java, C# and Python will become the COBOLs of tomorrow. We just don't know _when_ yet. The only
-thing that will stay the same are the concepts you learned on the way.
+thing that will stay the same are the concepts you learned along the way.
 
 And there will always be a maximum amount of useful concepts you can learn in a single niche.
 
