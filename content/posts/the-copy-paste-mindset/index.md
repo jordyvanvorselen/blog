@@ -1,5 +1,5 @@
 ---
-title: "The copy-paste mindset"
+title: "The Copy-Paste Mindset"
 draft: false
 date: 2025-07-08T12:00:00
 tags:
