@@ -21,9 +21,31 @@ paginate = 5
       tabWidth = 4
       noClasses = false
 
+[outputs]
+      home = ["html", "rss"]
+      page = ["html", "rss"]
+
+[mediaTypes]
+      [mediaTypes."application/atom"]
+            suffix = "xml"
+
+[outputFormats.Atom]
+      mediaType = "application/atom"
+      baseName = "index"
+      isPlainText = false
+
+[outputFormats]
+      [outputFormats.RSS]
+            mediatype = "application/rss+xml"
+            baseName = "index"
+
 [params]
       custom_css = ["css/syntax.css", "css/mermaid.css"]
       custom_js = []
+
+      [params.author]
+            email = 'jdoe@example.org'
+            name = 'John Doe'
 
 [params.mermaid]
       theme = "dark"

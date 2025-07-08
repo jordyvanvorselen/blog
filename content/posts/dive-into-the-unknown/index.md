@@ -100,6 +100,7 @@ planning seldom changes because of our estimates!"
 
 > "It's not how our process works. The custo..."
 
-You're starting to feel tired and just want to dive into the unknown.
+Tired of it all you feel the desire to jump back into the lake. Let's just swim, you think. Just
+nod.
 
-_But the next time, you gather 'round the lake, once again._
+_And the next time, you gather 'round the lake, once again._

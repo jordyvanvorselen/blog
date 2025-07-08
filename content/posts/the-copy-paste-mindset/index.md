@@ -1,7 +1,7 @@
 ---
 title: "The copy-paste mindset"
-draft: true
-date: 2023-11-16T10:00:00
+draft: false
+date: 2025-07-08T12:00:00
 tags:
   - Best Practices
   - Software Engineering
@@ -67,7 +67,7 @@ to fail to look beyond the borders of said niche.
 And to keep our precious job titles as specific as possible we welcome complexity.
 
 > Let’s go virtual DOM and Redux! Let’s just build two applications instead of one because _that_
-> helps our customers!
+> really helps our customers!
 
 It is a fundamentally flawed idea that we’re now [slowly coming back](https://htmx.org/) from, tail
 between legs. Some of us just don't realize it yet.
@@ -83,11 +83,13 @@ Are we, as the engineering community, slowly creeping into a fixed mindset?
 
 What’s stopping us from learning about servers, other languages, hosting, cloud, frontend, backend,
 CSS, animations, design or software architecture - all at the same time? We have the best learning
-materials ever available at the tips of our fingers, often for free!
+materials ever available at the tips of our fingers, often for free! And then there's people
+convincing themselves (or even worse: others) that you can only become really good at one of them
+:laughing:.
 
-I'd argue it's better to stop identifying with your precious programming language or framework.
-Learn from concepts and languages you _have yet to learn_. Preferably from people you currently
-think are crazy to work or think in a certain way. Learn from those you _think_ you disagree with.
+It's better to stop identifying with your precious programming language or framework. Learn from
+concepts and languages you _have yet to learn_. Preferably from people you currently think are crazy
+to work or think in a certain way. Learn from those you _think_ you disagree with.
 
 Because it’s all going to pass. Your cherished library, framework, or language _will_ be replaced.
 Even Java, C# and Python will become the COBOLs of tomorrow. We just don't know _when_ yet. The only

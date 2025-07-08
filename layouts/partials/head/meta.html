@@ -2,10 +2,14 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }}{{ end }}</title>
+{{ with .OutputFormats.Get "rss" -}}
+  {{ printf `<link rel=%q type=%q href=%q title=%q>` .Rel .MediaType.Type .Permalink site.Title | safeHTML }}
+{{ end }}
+<meta name="title" content="{{ .Title }}">
 <meta name="description"
       content="{{ if .IsPage }}{{ or .Params.description .Summary }}{{ else if .IsHome }}{{ .Site.Params.description }}{{ else if .IsNode }}{{ or .Params.description .Summary }}{{ end }}">
 <link rel="canonical" href="{{ with .Params.canonical }}{{ . }}{{ else }}{{ .Permalink }}{{ end }}">
-<link rel="robots" href="/robots.txt"/>
+<link rel="robots" href="/robots.txt">
 
 {{ template "_internal/opengraph.html" . }}
 
@@ -14,7 +18,7 @@
 {{ with .PublishDate }}
 <meta property="og:publish_date" {{ .Format $iso8601 | printf "content=%q" | safeHTMLAttr }} />
 <meta name="author" content="Jordy van Vorselen">
-<meta name="author" property="article:author" content="https://twitter.com/jvanvorselen"/>
-<meta property='article:publisher' content="https://twitter.com/jvanvorselen"/>{{ end }}
-<meta name="twitter:card" content="summary_large_image"/>
+<meta name="author" property="article:author" content="https://twitter.com/jvanvorselen">
+<meta property='article:publisher' content="https://twitter.com/jvanvorselen">{{ end }}
+<meta name="twitter:card" content="summary_large_image">
 {{ end }}
