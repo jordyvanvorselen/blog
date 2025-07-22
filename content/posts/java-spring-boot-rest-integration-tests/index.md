@@ -1,7 +1,7 @@
 ---
-title: "How to write elegant integration tests for a Spring Boot REST API"
+title: "Write elegant integration tests"
 draft: true
-date: 2024-01-25T15:00:00
+date: 2025-07-22T15:00:00
 tags:
   - Java
   - Spring Boot
@@ -95,13 +95,16 @@ external dependencies**.
 
 #### Should I use a real database in integration tests?
 
-_Yes, you should._
+_Yes, you should._ Most of the time.
 
 We want to test the integration between our application and the database. To do so, we need to use
 the same type of database as we use in production. This makes sure that you can find bugs in the
 queries that you write, before they hit production.
 
 And yes, even ORM's can sometimes behave differently when using a different database.
+
+But the big tradeoff here is speed - spinning up a database is costly and setting up, maintaining and
+running the tests will take more time.
 
 #### How to make sure each test is isolated from other tests?
 
